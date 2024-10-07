@@ -13,7 +13,7 @@ def load_sklearn_models(model_path):
     return final_model
 
 # load the model
-ADHD_model = load_sklearn_models("")
+ADHD_model = load_sklearn_models("best_model_rf")
 
 #title of the web page
 st.title("ADHD Predicting WebApp")
