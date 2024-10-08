@@ -18,7 +18,7 @@ def load_sklearn_models(model_path):
     return final_model
 
 # load the model
-ADHD_model = load_sklearn_models("best_model_rf")
+adhd_model = load_sklearn_models("best_model_rf")
 
 
 #title of the web page
@@ -31,68 +31,70 @@ st.image(IMAGE_ADDRESS)
 st.subheader("Please enter the details:")
 
 #input for Gender
-Gender=st.selectbox("Choose a gender",("Male","Female"),)
-if Gender=="Male":
-    G=0
+gender=st.selectbox("Choose a gender",("Male","Female"),)
+if gender=="Male":
+    g=0
 
 else:
-    G=1
-#st.write("You selected: ",Gender)
+    g=1
+#st.write("You selected: ",gender)
 
 #input for age
-Age=st.slider("What is the age", 0, 30, 10)
-#st.write("Age is", Age, "years old")
+age=st.slider("What is the age", 0.0, 30.0,0.0)
+#st.write("Age is", age, "years old")
 
 #Input for Handedness
-Handedness=st.selectbox("Please select the dominant hand",("Right-Handed","Left-Handed"))
-if Handedness=="Right-Handed":
-    H=0
+handedness=st.selectbox("Please select the dominant hand",("Right-Handed","Left-Handed","Ambidextrous-both the hands"))
+if handedness=="Right-Handed":
+    h=0
+elif handedness=="Left-Handed":
+    h=1
 else:
-    H=1
-#st.write("You selected:", "Left-Handed")
+    h=2
+#st.write("You selected:",handedness )
 
 
 # Input for Inattentive score 
-Inattentive = st.slider("Rate the level of inattentiveness (0-100)", 0, 100, 50)
-#st.write(f"Inattentiveness score: {Inattentive}")
+inattentive = st.slider("Rate the level of inattentiveness (0-100)", 0, 100, 0)
+#st.write(f"Inattentiveness score: {inattentive}")
 
 
 
 # Input for Impulsive score 
-Impulsive = st.slider("Rate the level of impulsiveness (0-100)", 0, 100, 50)
+impulsive = st.slider("Rate the level of impulsiveness (0-100)", 0, 100, 0)
 #st.write(f"Impulsiveness score: {Impulsive}")
 
 # IQ Measure input
-IQ_Measure=st.slider("Select IQ Measure (1-5)", 1,5,3) 
-#st.write(f"Selected IQ Measure: {IQ_Measure}")
+iq_measure=st.slider("Select IQ Measure (1-5)", 1,5,0) 
+#st.write(f"Selected IQ Measure: {iq_measure}")
 
 # Verbal IQ input
-Verbal_IQ = st.slider("Enter the  Verbal IQ", 0, 200, 100)
-#st.write(f"Verbal IQ score: {Verbal_IQ}")
+verbal_iq = st.slider("Enter the  Verbal IQ", 0, 200, 0)
+#st.write(f"Verbal IQ score: {verbal_IQ}")
 
 # Performance IQ input
-Performance_IQ = st.slider("Enter your Performance IQ", 0, 200, 100)
-#st.write(f"Performance IQ score: {Performance_IQ}")
+performance_iq = st.slider("Enter your Performance IQ", 0, 200,0)
+#st.write(f"Performance IQ score: {performance_IQ}")
 
 # Full4 IQ input
-Full4_IQ = st.slider("Enter your Full-Scale IQ (Full4 IQ)", 0, 200, 100)
-#st.write(f"Full scale IQ score: {Full4_IQ}")
+full4_iq = st.slider("Enter your Full-Scale IQ (full4 IQ)", 0, 200, 0)
+#st.write(f"Full scale IQ score: {full4_iq}")
 
 # Med Status input
-Med_Status = st.radio("Are you on medication?", ("Yes", "No"))
-if Med_Status=='Yes':
-    M=1
+med_status = st.radio("Are you on medication?", ("Yes", "No"))
+if med_status=='Yes':
+    m=1
 else:
-    M=2
-#st.write(f"Medication Status: {Med_Status}")
+    m=2
+#st.write(f"Medication Status: {med_status}")
 
 
 
 #make Predictions
 
 if st.button('Predict ADHD'):
-    input_data=[[G,Age,H,Inattentive,Impulsive,IQ_Measure,Verbal_IQ,Performance_IQ,Full4_IQ,M]]
-    predictions=ADHD_model.predict(input_data)
+    input_data=[[g,age,h,inattentive,impulsive,iq_measure,verbal_iq,performance_iq,full4_iq,m]]
+    predictions=adhd_model.predict(input_data)
     st.spinner(text="In progress...")
     st.subheader("User Condition: {}".format(LABEL_MAPPING[(predictions[0])]))
 
