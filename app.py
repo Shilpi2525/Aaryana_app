@@ -40,7 +40,7 @@ else:
 #st.write("You selected: ",gender)
 
 #input for age
-age=st.slider("What is the age", 0.0, 30.0,0.0)
+age=st.slider("What is the age", 0, 30,0)
 #st.write("Age is", age, "years old")
 
 #Input for Handedness
@@ -62,7 +62,7 @@ inattentive = st.slider("Rate the level of inattentiveness (0-100)", 0, 100, 0)
 
 # Input for Impulsive score 
 impulsive = st.slider("Rate the level of impulsiveness (0-100)", 0, 100, 0)
-#st.write(f"Impulsiveness score: {Impulsive}")
+#st.write(f"Impulsiveness score: {impulsive}")
 
 # IQ Measure input
 iq_measure=st.slider("Select IQ Measure (1-5)", 1,5,0) 
@@ -70,11 +70,11 @@ iq_measure=st.slider("Select IQ Measure (1-5)", 1,5,0)
 
 # Verbal IQ input
 verbal_iq = st.slider("Enter the  Verbal IQ", 0, 200, 0)
-#st.write(f"Verbal IQ score: {verbal_IQ}")
+#st.write(f"Verbal IQ score: {verbal_iq}")
 
 # Performance IQ input
 performance_iq = st.slider("Enter your Performance IQ", 0, 200,0)
-#st.write(f"Performance IQ score: {performance_IQ}")
+#st.write(f"Performance IQ score: {performance_iq}")
 
 # Full4 IQ input
 full4_iq = st.slider("Enter your Full-Scale IQ (full4 IQ)", 0, 200, 0)
